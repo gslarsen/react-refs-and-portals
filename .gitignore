@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# VS Code settings
+.vscode/
+
+# dotenv environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Parcel-bundler cache
+.cache/
+
+# Mac system files
+.DS_Store
+
+# IDE config files
+.idea/
+*.iml
+
+# Testing coverage
+coverage/
+
+# Service worker cache
+.sw-cache/
