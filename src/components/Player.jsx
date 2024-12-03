@@ -13,7 +13,15 @@ export default function Player() {
     <section id="player">
       <h2>Welcome {name || "unknown entity"}</h2>
       <p>
-        <input ref={playerName} type="text" />
+        <input
+          ref={playerName}
+          type="text"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSetName(e);
+            }
+          }}
+        />
         <button onClick={handleSetName}>Set Name</button>
       </p>
     </section>
