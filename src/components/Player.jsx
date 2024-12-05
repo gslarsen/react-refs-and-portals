@@ -18,9 +18,10 @@ export default function Player() {
           type="text"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              handleSetName(e);
+              handleSetName();
             }
           }}
+          name="player-name"
         />
         <button onClick={handleSetName}>Set Name</button>
       </p>
