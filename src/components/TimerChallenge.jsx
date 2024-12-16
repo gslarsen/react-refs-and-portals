@@ -11,14 +11,16 @@ const TimerChallenge = ({ title, targetTime }) => {
     setTimerStart(Date.now());
 
     timer.current = setTimeout(() => {
-      timeElapsed.current = (Date.now() - timerStart) / 1000;
-      setTimerStart(0);
-      modalInterface.current.openModal();
+      endGame(Date.now());
     }, targetTime * 1000);
   };
 
   const handleStop = () => {
-    timeElapsed.current = (Date.now() - timerStart) / 1000;
+    endGame(Date.now());
+  };
+
+  const endGame = (timeEnded) => {
+    timeElapsed.current = (timeEnded - timerStart) / 1000;
     setTimerStart(0);
     clearTimeout(timer.current);
     modalInterface.current.openModal();

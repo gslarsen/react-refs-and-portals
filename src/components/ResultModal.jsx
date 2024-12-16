@@ -3,6 +3,7 @@ import { useImperativeHandle, useRef } from "react";
 const ResultModal = ({ ref, targetTime, timeElapsed }) => {
   const dialog = useRef(null);
   const result = timeElapsed > targetTime ? "lost" : "won";
+  const score = Math.round((1 - (targetTime - timeElapsed) / targetTime) * 100);
 
   useImperativeHandle(ref, () => {
     return {
@@ -14,7 +15,8 @@ const ResultModal = ({ ref, targetTime, timeElapsed }) => {
   // When you have a form element with method="dialog" within a dialog element, the form will close the dialog when submitted.
   return (
     <dialog ref={dialog} className="result-modal">
-      <h2>You {result}</h2>
+      {result !== "won" && <h2>You {result}</h2>}
+      {result === "won" && <h2>Your score: {score}</h2>}
       <p>
         The target time was{" "}
         <strong>
@@ -24,7 +26,7 @@ const ResultModal = ({ ref, targetTime, timeElapsed }) => {
       {result === "won" && (
         <p>
           You stopped the timer with{" "}
-          <strong>{(targetTime - timeElapsed).toFixed(1)} seconds left</strong>
+          <strong>{(targetTime - timeElapsed).toFixed(2)} seconds left</strong>
         </p>
       )}
       <form method="dialog">
