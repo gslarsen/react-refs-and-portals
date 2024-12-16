@@ -1,4 +1,5 @@
 import { useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
 
 const ResultModal = ({ ref, targetTime, timeElapsed }) => {
   const dialog = useRef(null);
@@ -13,7 +14,7 @@ const ResultModal = ({ ref, targetTime, timeElapsed }) => {
     };
   });
   // When you have a form element with method="dialog" within a dialog element, the form will close the dialog when submitted.
-  return (
+  return createPortal(
     <dialog ref={dialog} className="result-modal">
       {result !== "won" && <h2>You {result}</h2>}
       {result === "won" && <h2>Your score: {score}</h2>}
@@ -32,7 +33,8 @@ const ResultModal = ({ ref, targetTime, timeElapsed }) => {
       <form method="dialog">
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog>,
+    document.getElementById("modal")
   );
 };
 
